@@ -1,6 +1,6 @@
 {application, nova_pubsub,
  [{description, "An OTP application"},
-  {vsn, "0.1.0"},
+  {vsn, "0.1.1"},
   {registered, []},
   {mod, {nova_pubsub_app, []}},
   {applications,
