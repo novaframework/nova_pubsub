@@ -96,8 +96,8 @@ handle_call({subscribe, Topic, User}, _, State) ->
     true = ets:insert(subscribers, {Topic, User}),
     {reply, ok, State};
 handle_call({unsubscribe, User, Topic}, _, State) ->
-    case ets:match(subscribers, {'$1', '$2'}) of
-	[Topic, User] ->
+    case ets:match_object(subscribers, {Topic, User}) of
+	[{Topic, User}] ->
 	    true = ets:delete_object(subscribers, {Topic, User}),
 	    {reply, ok, State};
 	_ ->
